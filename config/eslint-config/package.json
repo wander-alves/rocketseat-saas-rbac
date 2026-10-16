@@ -1,0 +1,22 @@
+{
+  "name": "@rbac/eslint-config",
+  "version": "0.0.0",
+  "type": "module",
+  "private": true,
+  "files": [
+    "library.js",
+    "next.js",
+    "node.js"
+  ],
+  "devDependencies": {
+    "@rocketseat/eslint-config": "^2.2.2",
+    "eslint-plugin-simple-import-sort": "^14.0.0",
+    "@rbac/prettier": "*"
+  },
+  "prettier": "@rbac/prettier",
+  "eslintConfig": {
+    "extends": [
+      "./library.js"
+    ]
+  }
+}
