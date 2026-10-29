@@ -1,11 +1,32 @@
-import { createMongoAbility, ForcedSubject, CreateAbility, MongoAbility } from '@casl/ability';
+import { 
+  AbilityBuilder,
+  CreateAbility,
+  createMongoAbility,
+  ForcedSubject,
+  MongoAbility,
+} from '@casl/ability';
 
-const actions = ['manage', 'invite'] as const;
-const subjects = ['User', 'all'] as const;
+const actions = ['manage', 'invite', 'delete'];
+const subjects = ['User', 'all'];
+
 type AppAbilities = [
-  typeof actions[number],
-  typeof subjects[number] | ForcedSubject<Exclude<typeof subjects[number], 'all'>>
+  (typeof actions)[number],
+  (
+    | (typeof subjects)[number] 
+    | ForcedSubject<Exclude<(typeof subjects)[number], 'all'>>
+  ),
 ];
 
-export type AppAbility = MongoAbility<AppAbilities>;
-export const createAppAbility = createMongoAbility as CreateAbility<AppAbility>;
+type AppAbility = MongoAbility<AppAbilities>;
+
+const createAppAbilitiy = createMongoAbility as CreateAbility<AppAbility>
+
+const { build, can, cannot } = new AbilityBuilder(createAppAbilitiy);
+
+can('invite', 'User');
+cannot('delete', 'User')
+
+const ability = build();
+
+export { ability };
+export type { AppAbility };
