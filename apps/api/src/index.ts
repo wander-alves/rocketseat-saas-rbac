@@ -1,9 +1,12 @@
-import { ability } from '@rbac/auth';
+import { defineAbilityFor } from '@rbac/auth';
+
+
+const ability = defineAbilityFor({ role: 'MEMBER' });
 
 const userCanInviteSomeoneElse = ability.can('invite', 'User');
 const userCanDeleteOtherUsers = ability.can('delete', 'User');
 
-const userCannotDeleteOtherUsers = ability.can('delete', 'User');
+const userCannotDeleteOtherUsers = ability.cannot('delete', 'User');
 
 console.log(userCanInviteSomeoneElse);
 console.log(userCanDeleteOtherUsers);
