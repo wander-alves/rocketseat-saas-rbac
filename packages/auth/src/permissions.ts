@@ -12,7 +12,8 @@ const permissions: Record<Role,PermissionsByRole> = {
     can('manage', 'all');
   },
   MEMBER: (_, { can })=> {
-    can('invite','User')
+    can('invite', 'User');
+    can('manage', 'Project');
   }
 }
 
