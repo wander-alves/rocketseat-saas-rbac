@@ -20,6 +20,7 @@ const appAbilitiesSchema = z.union([
   organizationSubjectSchema,
   inviteSubjectSchema,
   billingSubjectSchema,
+  z.tuple([z.literal('manage'), z.literal('all')]),
 ]);
 
 type AppAbilities = z.infer<typeof appAbilitiesSchema>;
