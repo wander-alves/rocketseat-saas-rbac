@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@fastify/cors": "^11.4.0",
+    "@prisma/client": "7.2.0",
     "@rbac/auth": "*",
     "fastify": "^5.12.8",
     "fastify-type-provider-zod": "^7.0.0",
@@ -16,6 +17,7 @@
     "@rbac/prettier": "*",
     "@rbac/tsconfig": "*",
     "@types/node": "^26.6.6",
+    "prisma": "7.2.0",
     "tsx": "^4.23.15"
   },
   "prettier": "@rbac/prettier",
