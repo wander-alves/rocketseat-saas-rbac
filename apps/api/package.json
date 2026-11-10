@@ -2,7 +2,12 @@
   "name": "@rbac/api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tsx watch ./src/http/server.ts"
+    "dev": "tsx watch ./src/http/server.ts",
+    "services:up": "docker compose -f ../../docker-compose.yaml up -d",
+    "services:down": "docker compose -f ../../docker-compose.yaml down",
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:seed": "tsx ./prisma/seed.ts"
   },
   "dependencies": {
     "@fastify/cors": "^11.4.0",
@@ -16,6 +21,7 @@
     "zod": "^4.6.7"
   },
   "devDependencies": {
+    "@faker-js/faker": "^10.6.0",
     "@rbac/eslint-config": "*",
     "@rbac/prettier": "*",
     "@rbac/tsconfig": "*",

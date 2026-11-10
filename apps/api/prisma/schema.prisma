@@ -71,6 +71,10 @@ model Invite {
   ownerId String @map("owner_id")
   owner   User   @relation(fields: [ownerId], references: [id])
 
+  organizationId String       @map("organization_id")
+  organization   Organization @relation(fields: [organizationId], references: [id])
+
+  @@unique([email, organizationId])
   @@map("invites")
 }
 
@@ -84,6 +88,7 @@ model Member {
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id])
 
+  @@unique([organizationId, userId])
   @@map("members")
 }
 
@@ -102,6 +107,7 @@ model Organization {
 
   members  Member[]
   projects Project[]
+  invites  Invite[]
 
   @@map("organizations")
 }

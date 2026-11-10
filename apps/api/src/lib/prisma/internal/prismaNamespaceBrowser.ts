@@ -114,7 +114,8 @@ export const InviteScalarFieldEnum = {
   email: 'email',
   role: 'role',
   createdAt: 'createdAt',
-  ownerId: 'ownerId'
+  ownerId: 'ownerId',
+  organizationId: 'organizationId'
 } as const
 
 export type InviteScalarFieldEnum = (typeof InviteScalarFieldEnum)[keyof typeof InviteScalarFieldEnum]
