@@ -5,16 +5,22 @@ import { hash } from 'bcryptjs';
 
 import { prisma } from '@/lib/prisma';
 
+
+
 async function createAccount(app: FastifyInstance) {
+  const createAccountBodySchema = z.object({
+    name: z.string(),
+    email: z.email(),
+    password: z.string().min(8),
+  });
+
   app.withTypeProvider<ZodTypeProvider>().post(
     '/accounts',
     {
       schema: {
-        body: z.object({
-          name: z.string(),
-          email: z.email(),
-          password: z.string().min(8)
-        }),
+        tags: ['Auth'],
+        summary: 'Create a new account',
+        body: createAccountBodySchema,
       },
     },
     async (request, reply) => {
