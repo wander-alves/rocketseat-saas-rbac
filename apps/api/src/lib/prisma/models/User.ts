@@ -201,7 +201,7 @@ export type UserWhereInput = {
   tokens?: Prisma.TokenListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
   invites?: Prisma.InviteListRelationFilter
-  members?: Prisma.MemberListRelationFilter
+  member_on?: Prisma.MemberListRelationFilter
   owns_organizations?: Prisma.OrganizationListRelationFilter
   owns_projects?: Prisma.ProjectListRelationFilter
 }
@@ -217,7 +217,7 @@ export type UserOrderByWithRelationInput = {
   tokens?: Prisma.TokenOrderByRelationAggregateInput
   accounts?: Prisma.AccountOrderByRelationAggregateInput
   invites?: Prisma.InviteOrderByRelationAggregateInput
-  members?: Prisma.MemberOrderByRelationAggregateInput
+  member_on?: Prisma.MemberOrderByRelationAggregateInput
   owns_organizations?: Prisma.OrganizationOrderByRelationAggregateInput
   owns_projects?: Prisma.ProjectOrderByRelationAggregateInput
 }
@@ -236,7 +236,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   tokens?: Prisma.TokenListRelationFilter
   accounts?: Prisma.AccountListRelationFilter
   invites?: Prisma.InviteListRelationFilter
-  members?: Prisma.MemberListRelationFilter
+  member_on?: Prisma.MemberListRelationFilter
   owns_organizations?: Prisma.OrganizationListRelationFilter
   owns_projects?: Prisma.ProjectListRelationFilter
 }, "id" | "email">
@@ -278,7 +278,7 @@ export type UserCreateInput = {
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
   owns_projects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
 }
@@ -294,7 +294,7 @@ export type UserUncheckedCreateInput = {
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
   owns_projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
 }
@@ -310,7 +310,7 @@ export type UserUpdateInput = {
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
   owns_projects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
 }
@@ -326,7 +326,7 @@ export type UserUncheckedUpdateInput = {
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
   owns_projects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
 }
@@ -450,18 +450,18 @@ export type UserUpdateOneRequiredWithoutInvitesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutInvitesInput, Prisma.UserUpdateWithoutInvitesInput>, Prisma.UserUncheckedUpdateWithoutInvitesInput>
 }
 
-export type UserCreateNestedOneWithoutMembersInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutMembersInput, Prisma.UserUncheckedCreateWithoutMembersInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMembersInput
+export type UserCreateNestedOneWithoutMember_onInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMember_onInput, Prisma.UserUncheckedCreateWithoutMember_onInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMember_onInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutMembersNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutMembersInput, Prisma.UserUncheckedCreateWithoutMembersInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMembersInput
-  upsert?: Prisma.UserUpsertWithoutMembersInput
+export type UserUpdateOneRequiredWithoutMember_onNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMember_onInput, Prisma.UserUncheckedCreateWithoutMember_onInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMember_onInput
+  upsert?: Prisma.UserUpsertWithoutMember_onInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMembersInput, Prisma.UserUpdateWithoutMembersInput>, Prisma.UserUncheckedUpdateWithoutMembersInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMember_onInput, Prisma.UserUpdateWithoutMember_onInput>, Prisma.UserUncheckedUpdateWithoutMember_onInput>
 }
 
 export type UserCreateNestedOneWithoutOwns_organizationsInput = {
@@ -502,7 +502,7 @@ export type UserCreateWithoutTokensInput = {
   updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
   owns_projects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
 }
@@ -517,7 +517,7 @@ export type UserUncheckedCreateWithoutTokensInput = {
   updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
   owns_projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
 }
@@ -548,7 +548,7 @@ export type UserUpdateWithoutTokensInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
   owns_projects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
 }
@@ -563,7 +563,7 @@ export type UserUncheckedUpdateWithoutTokensInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
   owns_projects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
 }
@@ -578,7 +578,7 @@ export type UserCreateWithoutAccountsInput = {
   updatedAt?: Date | string
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
   owns_projects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
 }
@@ -593,7 +593,7 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   updatedAt?: Date | string
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
   owns_projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
 }
@@ -624,7 +624,7 @@ export type UserUpdateWithoutAccountsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
   owns_projects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
 }
@@ -639,7 +639,7 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
   owns_projects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
 }
@@ -654,7 +654,7 @@ export type UserCreateWithoutInvitesInput = {
   updatedAt?: Date | string
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
   owns_projects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
 }
@@ -669,7 +669,7 @@ export type UserUncheckedCreateWithoutInvitesInput = {
   updatedAt?: Date | string
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
   owns_projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
 }
@@ -700,7 +700,7 @@ export type UserUpdateWithoutInvitesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
   owns_projects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
 }
@@ -715,12 +715,12 @@ export type UserUncheckedUpdateWithoutInvitesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
   owns_projects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
 }
 
-export type UserCreateWithoutMembersInput = {
+export type UserCreateWithoutMember_onInput = {
   id?: string
   name?: string | null
   email: string
@@ -735,7 +735,7 @@ export type UserCreateWithoutMembersInput = {
   owns_projects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
 }
 
-export type UserUncheckedCreateWithoutMembersInput = {
+export type UserUncheckedCreateWithoutMember_onInput = {
   id?: string
   name?: string | null
   email: string
@@ -750,23 +750,23 @@ export type UserUncheckedCreateWithoutMembersInput = {
   owns_projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
 }
 
-export type UserCreateOrConnectWithoutMembersInput = {
+export type UserCreateOrConnectWithoutMember_onInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutMembersInput, Prisma.UserUncheckedCreateWithoutMembersInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMember_onInput, Prisma.UserUncheckedCreateWithoutMember_onInput>
 }
 
-export type UserUpsertWithoutMembersInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutMembersInput, Prisma.UserUncheckedUpdateWithoutMembersInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutMembersInput, Prisma.UserUncheckedCreateWithoutMembersInput>
+export type UserUpsertWithoutMember_onInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMember_onInput, Prisma.UserUncheckedUpdateWithoutMember_onInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMember_onInput, Prisma.UserUncheckedCreateWithoutMember_onInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutMembersInput = {
+export type UserUpdateToOneWithWhereWithoutMember_onInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutMembersInput, Prisma.UserUncheckedUpdateWithoutMembersInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMember_onInput, Prisma.UserUncheckedUpdateWithoutMember_onInput>
 }
 
-export type UserUpdateWithoutMembersInput = {
+export type UserUpdateWithoutMember_onInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -781,7 +781,7 @@ export type UserUpdateWithoutMembersInput = {
   owns_projects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
 }
 
-export type UserUncheckedUpdateWithoutMembersInput = {
+export type UserUncheckedUpdateWithoutMember_onInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
@@ -807,7 +807,7 @@ export type UserCreateWithoutOwns_organizationsInput = {
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberCreateNestedManyWithoutUserInput
   owns_projects?: Prisma.ProjectCreateNestedManyWithoutOwnerInput
 }
 
@@ -822,7 +822,7 @@ export type UserUncheckedCreateWithoutOwns_organizationsInput = {
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   owns_projects?: Prisma.ProjectUncheckedCreateNestedManyWithoutOwnerInput
 }
 
@@ -853,7 +853,7 @@ export type UserUpdateWithoutOwns_organizationsInput = {
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUpdateManyWithoutUserNestedInput
   owns_projects?: Prisma.ProjectUpdateManyWithoutOwnerNestedInput
 }
 
@@ -868,7 +868,7 @@ export type UserUncheckedUpdateWithoutOwns_organizationsInput = {
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   owns_projects?: Prisma.ProjectUncheckedUpdateManyWithoutOwnerNestedInput
 }
 
@@ -883,7 +883,7 @@ export type UserCreateWithoutOwns_projectsInput = {
   tokens?: Prisma.TokenCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationCreateNestedManyWithoutOwnerInput
 }
 
@@ -898,7 +898,7 @@ export type UserUncheckedCreateWithoutOwns_projectsInput = {
   tokens?: Prisma.TokenUncheckedCreateNestedManyWithoutUserInput
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
   invites?: Prisma.InviteUncheckedCreateNestedManyWithoutOwnerInput
-  members?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
+  member_on?: Prisma.MemberUncheckedCreateNestedManyWithoutUserInput
   owns_organizations?: Prisma.OrganizationUncheckedCreateNestedManyWithoutOwnerInput
 }
 
@@ -929,7 +929,7 @@ export type UserUpdateWithoutOwns_projectsInput = {
   tokens?: Prisma.TokenUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUpdateManyWithoutOwnerNestedInput
 }
 
@@ -944,7 +944,7 @@ export type UserUncheckedUpdateWithoutOwns_projectsInput = {
   tokens?: Prisma.TokenUncheckedUpdateManyWithoutUserNestedInput
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
   invites?: Prisma.InviteUncheckedUpdateManyWithoutOwnerNestedInput
-  members?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
+  member_on?: Prisma.MemberUncheckedUpdateManyWithoutUserNestedInput
   owns_organizations?: Prisma.OrganizationUncheckedUpdateManyWithoutOwnerNestedInput
 }
 
@@ -957,7 +957,7 @@ export type UserCountOutputType = {
   tokens: number
   accounts: number
   invites: number
-  members: number
+  member_on: number
   owns_organizations: number
   owns_projects: number
 }
@@ -966,7 +966,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   tokens?: boolean | UserCountOutputTypeCountTokensArgs
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
   invites?: boolean | UserCountOutputTypeCountInvitesArgs
-  members?: boolean | UserCountOutputTypeCountMembersArgs
+  member_on?: boolean | UserCountOutputTypeCountMember_onArgs
   owns_organizations?: boolean | UserCountOutputTypeCountOwns_organizationsArgs
   owns_projects?: boolean | UserCountOutputTypeCountOwns_projectsArgs
 }
@@ -1005,7 +1005,7 @@ export type UserCountOutputTypeCountInvitesArgs<ExtArgs extends runtime.Types.Ex
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountMembersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountMember_onArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.MemberWhereInput
 }
 
@@ -1035,7 +1035,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   tokens?: boolean | Prisma.User$tokensArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   invites?: boolean | Prisma.User$invitesArgs<ExtArgs>
-  members?: boolean | Prisma.User$membersArgs<ExtArgs>
+  member_on?: boolean | Prisma.User$member_onArgs<ExtArgs>
   owns_organizations?: boolean | Prisma.User$owns_organizationsArgs<ExtArgs>
   owns_projects?: boolean | Prisma.User$owns_projectsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1076,7 +1076,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   tokens?: boolean | Prisma.User$tokensArgs<ExtArgs>
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
   invites?: boolean | Prisma.User$invitesArgs<ExtArgs>
-  members?: boolean | Prisma.User$membersArgs<ExtArgs>
+  member_on?: boolean | Prisma.User$member_onArgs<ExtArgs>
   owns_organizations?: boolean | Prisma.User$owns_organizationsArgs<ExtArgs>
   owns_projects?: boolean | Prisma.User$owns_projectsArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1090,7 +1090,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     tokens: Prisma.$TokenPayload<ExtArgs>[]
     accounts: Prisma.$AccountPayload<ExtArgs>[]
     invites: Prisma.$InvitePayload<ExtArgs>[]
-    members: Prisma.$MemberPayload<ExtArgs>[]
+    member_on: Prisma.$MemberPayload<ExtArgs>[]
     owns_organizations: Prisma.$OrganizationPayload<ExtArgs>[]
     owns_projects: Prisma.$ProjectPayload<ExtArgs>[]
   }
@@ -1499,7 +1499,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   tokens<T extends Prisma.User$tokensArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$tokensArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   invites<T extends Prisma.User$invitesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$invitesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InvitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  members<T extends Prisma.User$membersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$membersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  member_on<T extends Prisma.User$member_onArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$member_onArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$MemberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   owns_organizations<T extends Prisma.User$owns_organizationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$owns_organizationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$OrganizationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   owns_projects<T extends Prisma.User$owns_projectsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$owns_projectsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProjectPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
@@ -1998,9 +1998,9 @@ export type User$invitesArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
 }
 
 /**
- * User.members
+ * User.member_on
  */
-export type User$membersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$member_onArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Member
    */

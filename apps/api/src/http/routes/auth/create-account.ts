@@ -38,6 +38,15 @@ async function createAccount(app: FastifyInstance) {
         });
       }
 
+      const domain = email.split('@')[1];
+
+      const autoJoiningOrganization = await prisma.organization.findUnique({
+        where: {
+          domain,
+          shouldAttachUsersByDomain: true,
+        }
+      });
+
       const passwordHash = await hash(password, 8);
 
       await prisma.user.create({
@@ -45,7 +54,12 @@ async function createAccount(app: FastifyInstance) {
           name,
           email,
           passwordHash,
-        }
+          member_on: {
+            create: autoJoiningOrganization ? {
+              organizationId: autoJoiningOrganization.id,
+            } : undefined,
+          },
+        },
       });
 
       return reply.status(201).send();

@@ -224,7 +224,7 @@ export type MemberCreateInput = {
   id?: string
   role?: $Enums.Role
   organization: Prisma.OrganizationCreateNestedOneWithoutMembersInput
-  user: Prisma.UserCreateNestedOneWithoutMembersInput
+  user: Prisma.UserCreateNestedOneWithoutMember_onInput
 }
 
 export type MemberUncheckedCreateInput = {
@@ -238,7 +238,7 @@ export type MemberUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
   organization?: Prisma.OrganizationUpdateOneRequiredWithoutMembersNestedInput
-  user?: Prisma.UserUpdateOneRequiredWithoutMembersNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutMember_onNestedInput
 }
 
 export type MemberUncheckedUpdateInput = {
@@ -438,7 +438,7 @@ export type MemberScalarWhereInput = {
 export type MemberCreateWithoutOrganizationInput = {
   id?: string
   role?: $Enums.Role
-  user: Prisma.UserCreateNestedOneWithoutMembersInput
+  user: Prisma.UserCreateNestedOneWithoutMember_onInput
 }
 
 export type MemberUncheckedCreateWithoutOrganizationInput = {
@@ -506,7 +506,7 @@ export type MemberCreateManyOrganizationInput = {
 export type MemberUpdateWithoutOrganizationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  user?: Prisma.UserUpdateOneRequiredWithoutMembersNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutMember_onNestedInput
 }
 
 export type MemberUncheckedUpdateWithoutOrganizationInput = {

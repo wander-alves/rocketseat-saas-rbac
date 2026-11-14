@@ -39,6 +39,6 @@ app.register(routes);
 app.listen({
   port: env.PORT,
 }).then(()=> { 
-  console.info(`[SERVER] application running on ${env.PORT}`);
+  console.info(`[SERVER] application running on http://localhost:${env.PORT}`);
   console.info(`[DOCS] Swagger docs available on http://localhost:${env.PORT}/docs`);
 });
