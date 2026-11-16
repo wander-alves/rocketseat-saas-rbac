@@ -5,8 +5,6 @@ import { hash } from 'bcryptjs';
 
 import { prisma } from '@/lib/prisma';
 
-
-
 async function createAccount(app: FastifyInstance) {
   const createAccountBodySchema = z.object({
     name: z.string(),
