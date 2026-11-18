@@ -18,6 +18,17 @@ async function authenticateWithPassword(app: FastifyInstance) {
         tags: ['Auth'],
         summary: 'Authenticate a user with e-mail and password.',
         body: authenticateWithPasswordBodySchema,
+        response: {
+          400: z.object({
+            message: z.string(),
+          }),
+          401: z.object({
+            message: z.string(),
+          }),
+          201: z.object({
+            token: z.string(),
+          }),
+        }
       },
     }, 
     async(request, reply)=> {
@@ -49,7 +60,7 @@ async function authenticateWithPassword(app: FastifyInstance) {
         });
       }
 
-      const sessionToken = await reply.jwtSign(
+      const token = await reply.jwtSign(
         {
           sub: registeredUser.id,
         },
@@ -61,7 +72,7 @@ async function authenticateWithPassword(app: FastifyInstance) {
       );
 
       return reply.status(201).send({
-        sessionToken,
+        token,
       });
     },
   );
