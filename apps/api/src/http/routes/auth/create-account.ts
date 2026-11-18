@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { hash } from 'bcryptjs';
 
 import { prisma } from '@/lib/prisma';
+import { UnauthorizedError } from "../errors/unauthorized-error";
 
 async function createAccount(app: FastifyInstance) {
   const createAccountBodySchema = z.object({
@@ -31,9 +32,7 @@ async function createAccount(app: FastifyInstance) {
       });
 
       if(alreadyRegisteredUser) { 
-        return reply.status(400).send({
-          message: "User with same e-mail already exists.",
-        });
+        throw new UnauthorizedError('This e-mail is already registered.')
       }
 
       const domain = email.split('@')[1];

@@ -11,6 +11,7 @@ import {
 } from "fastify-type-provider-zod";
 
 import { routes } from './routes';
+import { errorHandler } from './error-handler';
 import { env } from '../env/index';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
@@ -19,6 +20,9 @@ app.setSerializerCompiler(serializerCompiler);
 app.setValidatorCompiler(validatorCompiler);
 
 app.register(fastifyCors);
+
+app.setErrorHandler(errorHandler);
+
 app.register(fastifySwagger, {
   openapi: {
     info: {

@@ -4,6 +4,8 @@ import { compare } from 'bcryptjs';
 import { z } from 'zod';
 
 import { prisma } from '@/lib/prisma';
+import { UnauthorizedError } from '../errors/unauthorized-error';
+import { BadRequestError } from '../errors/bad-request-error';
 
 async function authenticateWithPassword(app: FastifyInstance) {
   const authenticateWithPasswordBodySchema = z.object({
@@ -19,12 +21,6 @@ async function authenticateWithPassword(app: FastifyInstance) {
         summary: 'Authenticate a user with e-mail and password.',
         body: authenticateWithPasswordBodySchema,
         response: {
-          400: z.object({
-            message: z.string(),
-          }),
-          401: z.object({
-            message: z.string(),
-          }),
           201: z.object({
             token: z.string(),
           }),
@@ -41,23 +37,17 @@ async function authenticateWithPassword(app: FastifyInstance) {
       });
 
       if(!registeredUser) {
-        return reply.status(401).send({
-          message: 'Invalid email or password.'
-        });
+        throw new UnauthorizedError('Invalid email or password.');
       }
 
       if(registeredUser.passwordHash === null) {
-        return reply.status(400).send({
-          message: 'Your account have social login enabled. Please, try it to signin.'
-        });
+        throw new BadRequestError('Your account have social login enabled. Please, try it to signin.');
       }
 
       const passwordMatch = await compare(password, registeredUser.passwordHash);
 
       if(!passwordMatch) {
-        return reply.status(401).send({
-          message: 'Invalid email or password.'
-        });
+        throw new UnauthorizedError('Invalid email or password.');
       }
 
       const token = await reply.jwtSign(

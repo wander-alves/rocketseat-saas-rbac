@@ -4,6 +4,8 @@ import { z } from 'zod';
 
 import { prisma } from '@/lib/prisma';
 
+import { UnauthorizedError } from '../errors/unauthorized-error';
+
 async function getProfile(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
     '/profile',
@@ -19,9 +21,6 @@ async function getProfile(app: FastifyInstance) {
               email: z.string(),
               avatarUrl: z.string().nullable(),
             }),
-          }),
-          403: z.object({
-            message: z.string(),
           }),
         }
       }
@@ -41,9 +40,7 @@ async function getProfile(app: FastifyInstance) {
       });
 
       if(!userInfo) {
-        return reply.status(403).send({
-          message: 'Unauthorized access.'
-        });
+        throw new UnauthorizedError();
       }
 
       reply.send({
