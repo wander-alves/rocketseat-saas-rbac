@@ -1,7 +1,7 @@
 {
   "extends": "@rbac/tsconfig/library.json",
   "include": [
-    "./src/**/*"
+    "./src/**/*",
   ],
    "compilerOptions": {
     "strictPropertyInitialization": false,

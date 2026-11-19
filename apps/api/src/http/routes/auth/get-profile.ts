@@ -4,10 +4,13 @@ import { z } from 'zod';
 
 import { prisma } from '@/lib/prisma';
 
-import { UnauthorizedError } from '../errors/unauthorized-error';
+import { UnauthorizedError } from '@/http/routes/errors/unauthorized-error';
+import { auth } from '@/http/middlewares/auth';
 
 async function getProfile(app: FastifyInstance) {
-  app.withTypeProvider<ZodTypeProvider>().get(
+  app.withTypeProvider<ZodTypeProvider>()
+  .register(auth)
+  .get(
     '/profile',
     {
       schema: {
@@ -26,7 +29,7 @@ async function getProfile(app: FastifyInstance) {
       }
     },
     async (request, reply)=> {
-      const { sub } = await request.jwtVerify<{ sub: string }>()
+      const userId = await request.getCurrentUserId();
       const userInfo = await prisma.user.findUnique({
         select: {
           id: true,
@@ -35,7 +38,7 @@ async function getProfile(app: FastifyInstance) {
           avatarUrl: true,
         },
         where: {
-          id: sub
+          id: userId
         }
       });
 

@@ -29,6 +29,7 @@ function errorHandler(error: FastifyError, _: FastifyRequest, reply: FastifyRepl
       });
     }
 
+    console.error(error)
     
     return reply.status(500).send({
       message: 'Internal server error.'
