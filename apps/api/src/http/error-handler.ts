@@ -1,8 +1,8 @@
 import type { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 import { z, ZodError } from 'zod';
 
-import { BadRequestError } from './routes/errors/bad-request-error';
-import { UnauthorizedError } from './routes/errors/unauthorized-error';
+import { BadRequestError } from '@/http/routes/errors/bad-request-error';
+import { UnauthorizedError } from '@/http/routes/errors/unauthorized-error';
 
 function errorHandler(error: FastifyError, _: FastifyRequest, reply: FastifyReply) {
     if (error.code === "FST_ERR_VALIDATION") {

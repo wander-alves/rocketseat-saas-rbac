@@ -4,8 +4,8 @@ import { compare } from 'bcryptjs';
 import { z } from 'zod';
 
 import { prisma } from '@/lib/prisma';
-import { UnauthorizedError } from '../errors/unauthorized-error';
-import { BadRequestError } from '../errors/bad-request-error';
+import { UnauthorizedError } from '@/http/routes/errors/unauthorized-error';
+import { BadRequestError } from '@/http/routes/errors/bad-request-error';
 
 async function authenticateWithPassword(app: FastifyInstance) {
   const authenticateWithPasswordBodySchema = z.object({

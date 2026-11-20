@@ -4,7 +4,8 @@ import { z } from 'zod';
 import { hash } from 'bcryptjs';
 
 import { prisma } from '@/lib/prisma';
-import { UnauthorizedError } from "../errors/unauthorized-error";
+import { UnauthorizedError } from "@/http/routes/errors/unauthorized-error";
+import { env } from "@/env";
 
 async function createAccount(app: FastifyInstance) {
   const createAccountBodySchema = z.object({
@@ -44,7 +45,7 @@ async function createAccount(app: FastifyInstance) {
         }
       });
 
-      const passwordHash = await hash(password, 8);
+      const passwordHash = await hash(password, env.PASSWD_ROUNDS);
 
       await prisma.user.create({
         data: {

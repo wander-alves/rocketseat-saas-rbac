@@ -10,9 +10,9 @@ import {
   type ZodTypeProvider, 
 } from "fastify-type-provider-zod";
 
-import { routes } from './routes';
-import { errorHandler } from './error-handler';
-import { env } from '../env/index';
+import { routes } from '@/http/routes';
+import { errorHandler } from '@/http/error-handler';
+import { env } from '@/env';
 
 const app = fastify().withTypeProvider<ZodTypeProvider>();
 
