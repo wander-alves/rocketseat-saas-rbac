@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import { BadRequestError } from '@/http/routes/errors/bad-request-error';
 import { prisma } from '@/lib/prisma';
-import { env } from '@/env';
+import { env } from '@rbac/env';
 
 async function authenticateWithGithub(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -21,7 +21,7 @@ async function authenticateWithGithub(app: FastifyInstance) {
     async (request, reply) => {
       const { code } = request.body;
 
-      const githubAuthURL = new URL(env.GITHUB_AUTH_URL);
+      const githubAuthURL = new URL(env.GITHUB_OAUTH_URL);
       githubAuthURL.searchParams.set('client_id', env.GITHUB_OAUTH_CLIENT_ID,);
       githubAuthURL.searchParams.set(
         'client_secret',
@@ -29,7 +29,7 @@ async function authenticateWithGithub(app: FastifyInstance) {
       );
       githubAuthURL.searchParams.set(
         'redirect_uri',
-        env.GITHUB_OAUTH_REDIRECT_URL,
+        env.GITHUB_OAUTH_CLIENT_REDIRECT_URI,
       )
       githubAuthURL.searchParams.set('code', code);
 

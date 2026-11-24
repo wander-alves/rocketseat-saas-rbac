@@ -3,7 +3,7 @@ import { hash } from 'bcryptjs';
 import { faker } from '@faker-js/faker';
 
 import { PrismaClient } from '../src/lib/prisma/client';
-import { env } from '../src/env/';
+import { env } from '@rbac/env';
 
 
 const adapter = new PrismaPg({
@@ -17,6 +17,8 @@ const prisma = new PrismaClient({
 async function seed() {
   const passwordHash = await hash('test1234', 1);
 
+  // await prisma.invite.deleteMany();
+  // await prisma.token.deleteMany();
   await prisma.member.deleteMany();
   await prisma.project.deleteMany();
   await prisma.organization.deleteMany();

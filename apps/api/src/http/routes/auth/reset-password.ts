@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { hash } from 'bcryptjs';
 
 import { prisma } from '@/lib/prisma';
-import { env } from '@/env';
+import { env } from '@rbac/env';
 import { UnauthorizedError } from '@/http/routes/errors/unauthorized-error';
 
 async function resetPassword(app: FastifyInstance) { 

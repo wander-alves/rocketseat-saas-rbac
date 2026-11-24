@@ -5,7 +5,7 @@ import { hash } from 'bcryptjs';
 
 import { prisma } from '@/lib/prisma';
 import { UnauthorizedError } from "@/http/routes/errors/unauthorized-error";
-import { env } from "@/env";
+import { env } from "@rbac/env";
 
 async function createAccount(app: FastifyInstance) {
   const createAccountBodySchema = z.object({
