@@ -53,6 +53,7 @@ model Account {
   userId String @map("user_id")
   user   User   @relation(fields: [userId], references: [id])
 
+  @@unique([provider, userId])
   @@map("accounts")
 }
 
@@ -75,6 +76,7 @@ model Invite {
   organization   Organization @relation(fields: [organizationId], references: [id])
 
   @@unique([email, organizationId])
+  @@index([email])
   @@map("invites")
 }
 

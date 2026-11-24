@@ -188,13 +188,14 @@ export type AccountOrderByWithRelationInput = {
 export type AccountWhereUniqueInput = Prisma.AtLeast<{
   id?: string
   providerAccountId?: string
+  provider_userId?: Prisma.AccountProviderUserIdCompoundUniqueInput
   AND?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[]
   OR?: Prisma.AccountWhereInput[]
   NOT?: Prisma.AccountWhereInput | Prisma.AccountWhereInput[]
   provider?: Prisma.EnumAccountProviderFilter<"Account"> | $Enums.AccountProvider
   userId?: Prisma.StringFilter<"Account"> | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
-}, "id" | "providerAccountId">
+}, "id" | "providerAccountId" | "provider_userId">
 
 export type AccountOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -272,6 +273,11 @@ export type AccountListRelationFilter = {
 
 export type AccountOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type AccountProviderUserIdCompoundUniqueInput = {
+  provider: $Enums.AccountProvider
+  userId: string
 }
 
 export type AccountCountOrderByAggregateInput = {
